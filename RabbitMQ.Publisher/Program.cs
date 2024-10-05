@@ -21,11 +21,17 @@ namespace RabbitMQ.Publisher
 			using IModel channel = connection.CreateModel();
 
 			// create queue 
-			channel.QueueDeclare(queue: "example-queue",exclusive:false);
+			channel.QueueDeclare(queue: "example-queue",exclusive:false,durable:true);
 
 			// send message Queue
+
+			IBasicProperties properties=channel.CreateBasicProperties();    // durable : configuretion
+			properties.Persistent = true;                                   //
+
 			byte[] message = Encoding.UTF8.GetBytes("Merhaba");
-			channel.BasicPublish(exchange: "", "example-queue", body: message);
+			channel.BasicPublish(exchange: "", "example-queue", body: message,basicProperties:properties);
+
+			
 		}
 	}
 }
