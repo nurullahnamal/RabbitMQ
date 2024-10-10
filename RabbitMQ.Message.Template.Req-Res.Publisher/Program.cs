@@ -31,7 +31,7 @@ namespace RabbitMQ.Message.Template.Req_Res.Publisher
 
 			for (int i = 0; i < 55; i++)
 			{
-				byte[] message = Encoding.UTF8.GetBytes("Mesaj " + i);
+				byte[] message = Encoding.UTF8.GetBytes("Mesaj  " + i);
 				channel.BasicPublish(
 					exchange: string.Empty,
 					routingKey: requestQueueName,
