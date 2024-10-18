@@ -12,7 +12,7 @@ namespace RabbitMQ.ESB.MassTransit.RequestResponsePattern.Consumer.Consumers
 	{
 		public Task Consume(ConsumeContext<RequestMessage> context)
 		{
-            Console.WriteLine($"gelen mesaj : {context.Message.Text}");
+            Console.WriteLine($"Gelen Mesaj : {context.Message.Text}");
 			context.RespondAsync<ResponseMessage>(new() { Text = $"{context.Message.MessageNo}. response to request " });
 			return Task.CompletedTask;	
 		}
